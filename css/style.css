@@ -44,10 +44,12 @@ html {
   font-family: sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+overflow-y: scroll; }
 
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
-  display: block; }
+  display: block; 
+  }
 
 body {
   margin: 0;
@@ -57,7 +59,8 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #fff; }
+  background-color: #fff;
+  
 
 [tabindex="-1"]:focus {
   outline: 0 !important; }
@@ -9765,3 +9768,4 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+  }
