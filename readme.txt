@@ -1,8 +1,21 @@
-Thank you for using our template!
+# A responsive portfolio website documenting my journey as a Sophomore Computer Engineer.,
 
-For more awesome templates please visit https://colorlib.com/wp/templates/
+# Professional Portfolio
 
-Copyright information for the template can't be altered/removed unless you purchase a license.
-More information about the license is available here: https://colorlib.com/wp/licence/
+A responsive personal website acting as a digital curriculum vitae and project showcase. This site aggregates all relevant professional data regarding my career path as a Computer Engineering Sophomore.
 
-Removing copyright information without the license will result in suspension of your hosting and/or domain name(s).
+## 🚀 Tech Stack
+
+Frontend: HTML5, CSS3
+
+Framework: Bootstrap (for responsive layout)
+
+Scripting: JavaScript (DOM manipulation and interactivity)
+
+## 🌟 Features
+
+Fully responsive design (mobile/tablet friendly).
+
+Comprehensive "About Me" section detailing engineering coursework.
+
+Centralized display of professional certifications and technical projects.
