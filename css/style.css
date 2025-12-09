@@ -8472,6 +8472,7 @@ h1, h2, h3, h4, h5,
             width: 150px;
             height: 50%;
             opacity: 1;
+            pointer-events: none;
             border-right: 10px solid rgba(0, 0, 0, 0.1); }
             @media (max-width: 991.98px) {
               .owl-carousel.home-slider .slider-item .slider-text .one-third .overlay, .owl-carousel.home-slider .slider-item .slider-text .one-third .overlay-1 {
