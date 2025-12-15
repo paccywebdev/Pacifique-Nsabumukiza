@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paccy To-Do List App</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts for modern typography -->
+    <link rel="preconnect" href="https://fonts.googlegapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png">
+
+</head>
+
+<body>
+    <div id="app">
+        <aside class="sidebar glass-panel">
+            <div class="logo">
+                <img src="logo.png" alt="Paccy Logo" style="width: 40px; height: 40px; border-radius: 8px;"> Paccy To-Do
+                List App
+            </div>
+            <nav>
+                <button class="nav-btn active" data-view="dashboard">
+                    <i class="fa-solid fa-chart-pie"></i> <span class="nav-text"
+                        data-i18n="sidebar.dashboard">Dashboard</span>
+                </button>
+                <button class="nav-btn" data-view="todo">
+                    <i class="fa-solid fa-list-check"></i> <span class="nav-text" data-i18n="sidebar.todo">To-Do &
+                        Courses</span>
+                </button>
+                <button class="nav-btn" data-view="calendar">
+                    <i class="fa-regular fa-calendar"></i> <span class="nav-text"
+                        data-i18n="sidebar.calendar">Calendar</span>
+                </button>
+                <button class="nav-btn" data-view="ai-agent">
+                    <i class="fa-solid fa-robot"></i> <span class="nav-text" data-i18n="sidebar.ai">AI Planner</span>
+                </button>
+                <button class="nav-btn" data-view="notes">
+                    <i class="fa-solid fa-sticky-note"></i> <span class="nav-text"
+                        data-i18n="sidebar.notes">Notes</span>
+                </button>
+            </nav>
+            <div class="settings">
+                <button id="settings-btn" class="icon-btn" title="Settings">
+                    <i class="fa-solid fa-gear"></i>
+                </button>
+                <button id="theme-toggle" class="icon-btn">
+                    <i class="fa-solid fa-lightbulb"></i>
+                </button>
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=Paccy&background=00f3ff&color=fff" alt="User">
+                    <span>Paccy</span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar glass-panel">
+                <h1 id="page-title" data-i18n="dashboard.title">Dashboard</h1>
+                <div class="header-actions">
+                    <div class="cloud-status">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> <span id="cloud-msg"
+                            data-i18n="header.synced">Synced</span>
+                    </div>
+                    <button class="add-task-btn" id="quick-add-btn">
+                        <i class="fa-solid fa-plus"></i> <span data-i18n="header.newTask">New Task</span>
+                    </button>
+                </div>
+            </header>
+
+            <div id="content-area" class="content-container">
+                <!-- Views will be injected here dynamically -->
+            </div>
+
+            <footer class="app-footer">
+                <a href="https://paccywebdev.github.io/Pacifique-Nsabumukiza/" target="_blank" class="creator-btn">
+                    <i class="fa-solid fa-laptop-code"></i>
+                    <span>Contact Creator <span class="highlight">"Paccy Developer"</span></span>
+                </a>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div id="modal-container" class="modal-overlay hidden">
+        <div class="glass-panel modal-content"
+            style="max-width: 500px; width: 90%; padding: 2rem; border-radius: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <h2 style="font-family: var(--font-heading);">Settings</h2>
+                <button class="icon-btn" onclick="document.getElementById('modal-container').classList.add('hidden')">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Background Options -->
+            <div style="margin-bottom: 2rem;">
+                <h4 style="margin-bottom: 1rem; color: var(--text-muted);">Theme Background</h4>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; max-height: 200px; overflow-y: auto; padding-right: 5px;"
+                    class="custom-scroll">
+                    <button class="bg-option glass-panel" data-bg="aurora"
+                        style="padding: 1rem; text-align: left; display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                        <span
+                            style="width: 20px; height: 20px; border-radius: 50%; background: radial-gradient(circle, #38bdf8, #111827);"></span>
+                        Aurora
+                    </button>
+                    <button class="bg-option glass-panel" data-bg="ocean"
+                        style="padding: 1rem; text-align: left; display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                        <span
+                            style="width: 20px; height: 20px; border-radius: 50%; background: radial-gradient(circle, #00f3ff, #000033);"></span>
+                        Neon Ocean
+                    </button>
+                    <button class="bg-option glass-panel" data-bg="midnight"
+                        style="padding: 1rem; text-align: left; display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                        <span
+                            style="width: 20px; height: 20px; border-radius: 50%; background: radial-gradient(circle, #4a0018, #000000);"></span>
+                        Crimson
+                    </button>
+                    <button class="bg-option glass-panel" data-bg="forest"
+                        style="padding: 1rem; text-align: left; display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                        <span
+                            style="width: 20px; height: 20px; border-radius: 50%; background: radial-gradient(circle, #10b981, #064e3b);"></span>
+                        Deep Forest
+                    </button>
+                    <button class="bg-option glass-panel" data-bg="sunset"
+                        style="padding: 1rem; text-align: left; display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                        <span
+                            style="width: 20px; height: 20px; border-radius: 50%; background: radial-gradient(circle, #f97316, #431407);"></span>
+                        Sunset
+                    </button>
+                    <button class="bg-option glass-panel" data-bg="lavender"
+                        style="padding: 1rem; text-align: left; display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                        <span
+                            style="width: 20px; height: 20px; border-radius: 50%; background: radial-gradient(circle, #c084fc, #1e1b4b);"></span>
+                        Lavender
+                    </button>
+                    <button class="bg-option glass-panel" data-bg="royal"
+                        style="padding: 1rem; text-align: left; display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                        <span
+                            style="width: 20px; height: 20px; border-radius: 50%; background: radial-gradient(circle, #fbbf24, #000000);"></span>
+                        Royal Gold
+                    </button>
+                    <button class="bg-option glass-panel" data-bg="cherry"
+                        style="padding: 1rem; text-align: left; display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                        <span
+                            style="width: 20px; height: 20px; border-radius: 50%; background: radial-gradient(circle, #f43f5e, #270308);"></span>
+                        Cherry
+                    </button>
+                    <button class="bg-option glass-panel" data-bg="coffee"
+                        style="padding: 1rem; text-align: left; display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                        <span
+                            style="width: 20px; height: 20px; border-radius: 50%; background: radial-gradient(circle, #d6d3d1, #1c1917);"></span>
+                        Coffee
+                    </button>
+                    <button class="bg-option glass-panel" data-bg="slate"
+                        style="padding: 1rem; text-align: left; display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                        <span
+                            style="width: 20px; height: 20px; border-radius: 50%; background: radial-gradient(circle, #94a3b8, #0f172a);"></span>
+                        Slate
+                    </button>
+                    <!-- New Futurustic Themes -->
+                    <button class="bg-option glass-panel" data-bg="cyberpunk"
+                        style="padding: 1rem; text-align: left; display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                        <span
+                            style="width: 20px; height: 20px; border-radius: 50%; background: radial-gradient(circle, #f472b6, #4c1d95);"></span>
+                        Cyberpunk
+                    </button>
+                    <button class="bg-option glass-panel" data-bg="galactic"
+                        style="padding: 1rem; text-align: left; display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                        <span
+                            style="width: 20px; height: 20px; border-radius: 50%; background: radial-gradient(circle, #6366f1, #000000);"></span>
+                        Galactic
+                    </button>
+                    <button class="bg-option glass-panel" data-bg="matrix"
+                        style="padding: 1rem; text-align: left; display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                        <span
+                            style="width: 20px; height: 20px; border-radius: 50%; background: radial-gradient(circle, #22c55e, #022c22);"></span>
+                        Matrix
+                    </button>
+                </div>
+            </div>
+
+            <!-- Language Options -->
+            <div style="margin-bottom: 2rem;">
+                <h4 style="margin-bottom: 1rem; color: var(--text-muted);">Language</h4>
+                <select id="lang-select"
+                    style="width: 100%; padding: 0.8rem; background: var(--glass-bg); border: 1px solid var(--glass-border); color: white; border-radius: 10px;">
+                    <!-- Populated by JS -->
+                </select>
+            </div>
+
+            <!-- Google Calendar -->
+            <div>
+                <h4 style="margin-bottom: 1rem; color: var(--text-muted);">Integrations</h4>
+
+                <div
+                    style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 12px; margin-bottom: 1rem;">
+                    <label
+                        style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--text-muted);">Google
+                        Client ID</label>
+                    <input type="text" id="google-client-id" placeholder="Paste Client ID here"
+                        style="width: 100%; padding: 0.8rem; background: var(--glass-bg); border: 1px solid var(--glass-border); color: white; border-radius: 8px; margin-bottom: 1rem; outline: none;">
+
+                    <label
+                        style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--text-muted);">Google
+                        API Key</label>
+                    <input type="text" id="google-api-key" placeholder="Paste API Key here"
+                        style="width: 100%; padding: 0.8rem; background: var(--glass-bg); border: 1px solid var(--glass-border); color: white; border-radius: 8px; margin-bottom: 1rem; outline: none;">
+
+                    <button id="save-google-config"
+                        style="background: var(--primary); color: white; border: none; padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer; width: 100%; font-weight: bold;">
+                        Save Keys
+                    </button>
+                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem; text-align: center;">
+                        <a href="https://console.cloud.google.com/" target="_blank" style="color: var(--secondary);">Get
+                            keys from Google Cloud Console</a>
+                    </p>
+                </div>
+
+                <button id="global-google-sync"
+                    style="width: 100%; padding: 1rem; background: var(--glass-bg); border: 1px solid var(--glass-border); color: white; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.2s;">
+                    <i class="fa-brands fa-google"></i> Pair with Google Calendar
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Google API Scripts -->
+    <script src="js/google-integration.js"></script>
+    <script src="https://accounts.google.com/gsi/client" onload="gisLoaded()" async defer></script>
+    <script src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+
+    <!-- Scripts loaded sequentially -->
+    <script src="js/storage.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/todo.js"></script>
+    <script src="js/calendar.js"></script>
+    <script src="js/ai-agent.js"></script>
+    <script src="js/notes.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
