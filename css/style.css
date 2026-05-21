@@ -9770,3 +9770,183 @@ textarea.form-control {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
   
+
+/* ========================================
+   DARK MODE - Appended safely, no edits
+   above. Toggle via body.dark-mode class.
+   ======================================== */
+
+body.dark-mode {
+  background: #121212 !important;
+  color: #cccccc !important;
+}
+
+/* Headings */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode .h1,
+body.dark-mode .h2,
+body.dark-mode .h3,
+body.dark-mode .h4,
+body.dark-mode .h5 {
+  color: #e8e8e8 !important;
+}
+
+/* Navbar - transparent state (hero) */
+body.dark-mode .ftco-navbar-light {
+  background: #1a1a1a !important;
+}
+body.dark-mode .ftco-navbar-light .navbar-brand,
+body.dark-mode .ftco-navbar-light .navbar-brand span {
+  color: #fff !important;
+}
+body.dark-mode .ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
+  color: #e0e0e0 !important;
+}
+
+/* Navbar - scrolled state */
+body.dark-mode .ftco-navbar-light.scrolled {
+  background: #1a1a1a !important;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5) !important;
+}
+body.dark-mode .ftco-navbar-light.scrolled .nav-link {
+  color: #e0e0e0 !important;
+}
+body.dark-mode .ftco-navbar-light.scrolled .navbar-brand {
+  color: #fff !important;
+}
+body.dark-mode .ftco-navbar-light.scrolled .navbar-brand span {
+  color: #b1b493 !important;
+}
+
+/* Hero slider white overlays (decorative skewed panels) */
+body.dark-mode .owl-carousel.home-slider .slider-item .slider-text .one-third .overlay,
+body.dark-mode .owl-carousel.home-slider .slider-item .slider-text .one-third .overlay-1 {
+  background: #1e1e1e !important;
+}
+
+/* Hero text */
+body.dark-mode .owl-carousel.home-slider .slider-item .slider-text h1 {
+  color: #ffffff !important;
+}
+body.dark-mode .owl-carousel.home-slider .slider-item .slider-text p {
+  color: rgba(200, 200, 200, 0.85) !important;
+}
+body.dark-mode .owl-carousel.home-slider .slider-item .slider-text .subheading {
+  color: #b1b493 !important;
+}
+
+/* Counter section */
+body.dark-mode .bg-light,
+body.dark-mode #section-counter {
+  background: #1e1e1e !important;
+}
+body.dark-mode .ftco-counter .text .number {
+  color: #e8e8e8 !important;
+}
+
+/* About section */
+body.dark-mode .ftco-about ul.about-info li span:first-child {
+  color: #e0e0e0 !important;
+}
+
+/* Skills section */
+body.dark-mode .progress-circle .progress::after {
+  border-color: #333 !important;
+}
+
+/* Hire me banner - keep the brand green, just tweak text */
+body.dark-mode .ftco-hireme {
+  background: #8a8c72 !important;
+}
+
+/* Certification cards */
+body.dark-mode .project .overlay {
+  background: #000 !important;
+}
+
+/* Testimonials */
+body.dark-mode .testimony-wrap {
+  background: #1e1e1e !important;
+  border-color: rgba(255,255,255,0.05) !important;
+  box-shadow: 0px 5px 21px -14px rgba(0,0,0,0.5) !important;
+}
+body.dark-mode .testimony-wrap .name {
+  color: #e8e8e8 !important;
+}
+body.dark-mode .testimony-wrap .position {
+  color: #aaa !important;
+}
+
+/* Blog section */
+body.dark-mode .blog-entry .text .heading a {
+  color: #e0e0e0 !important;
+}
+body.dark-mode .blog-entry .meta a,
+body.dark-mode .blog-entry .meta span {
+  color: #aaa !important;
+}
+
+/* Contact form */
+body.dark-mode .form-control {
+  background: #2a2a2a !important;
+  color: #e0e0e0 !important;
+  border-color: #444 !important;
+}
+
+/* Services/expertise cards */
+body.dark-mode .services {
+  background: #1e1e1e !important;
+  color: #ccc !important;
+}
+body.dark-mode .services .media-body h3 {
+  color: #e8e8e8 !important;
+}
+
+/* aside-stretch decorative strip */
+body.dark-mode .aside-stretch,
+body.dark-mode .aside-stretch:after {
+  background: #2a2a2a !important;
+}
+
+/* Links */
+body.dark-mode a {
+  color: #b1b493;
+}
+
+/* Footer stays dark (it already is #232931) — just slightly lighter */
+body.dark-mode .ftco-footer {
+  background: #0d0d0d !important;
+}
+
+/* ---- Dark Mode Toggle Button ---- */
+#dark-mode-toggle {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: #b1b493;
+  color: #fff;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+#dark-mode-toggle:hover {
+  transform: scale(1.1);
+  background: #9a9d7e;
+}
+body.dark-mode #dark-mode-toggle {
+  background: #333;
+  color: #f0e68c;
+}

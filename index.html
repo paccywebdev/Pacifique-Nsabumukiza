@@ -1175,5 +1175,20 @@
 		
 		<script src="js/main.js"></script>
 		
-	</body>
+	
+  <script>
+    (function() {
+      if (localStorage.getItem('darkMode') === 'on') {
+        document.body.classList.add('dark-mode');
+        document.getElementById('dark-mode-toggle').textContent = '☀️';
+      }
+      document.getElementById('dark-mode-toggle').addEventListener('click', function() {
+        var isDark = document.body.classList.toggle('dark-mode');
+        this.textContent = isDark ? '☀️' : '🌙';
+        localStorage.setItem('darkMode', isDark ? 'on' : 'off');
+      });
+    })();
+  </script>
+
+</body>
 	</html>
